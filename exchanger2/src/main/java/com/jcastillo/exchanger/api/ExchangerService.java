@@ -1,6 +1,8 @@
 package com.jcastillo.exchanger.api;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,9 +21,10 @@ import org.springframework.web.context.request.WebRequest;
 import com.jcastillo.exchanger.controller.CurrencyExchangeException;
 import com.jcastillo.exchanger.controller.CurrencyExchanger;
 import com.jcastillo.exchanger.controller.Exchange;
+import com.jcastillo.exchanger.model.Currency;
 
 @RestController
-@RequestMapping("/v1/exchanges")
+@RequestMapping("api/v1/exchanges")
 public class ExchangerService {
 	private static final Logger log = Logger.getLogger(ExchangerService.class.getName());
 	private static final int DEFAULT_SCALE =4;
@@ -56,6 +59,23 @@ public class ExchangerService {
 		return exchange;
 		
 	}
+	
+	@GetMapping(value="currencies",produces = {MediaType.APPLICATION_JSON}  )
+	public List<Currency> getCurrencies() {
+		
+		log.log(Level.INFO,"getCurrencies at {0}",LocalDateTime.now());
+		List<Currency> currencies=null;
+
+		currencies=exchanger.findCurrencies();
+		log.log(Level.INFO,"Currencies found {0}",currencies!=null?currencies.size():0);
+						
+		return currencies;
+		
+	}
+	
+	
+	
+	
 	
 	
 
