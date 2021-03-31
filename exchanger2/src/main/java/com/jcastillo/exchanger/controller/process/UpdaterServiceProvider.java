@@ -43,7 +43,7 @@ public class UpdaterServiceProvider {
 	ConversionRateRepo conversionRateRepo;
 	
 	
-	@Scheduled(cron ="*/30 8-20 * * MON-FRI")
+	@Scheduled(cron ="* */30 8-20 * * MON-FRI")
 	public void updateRates() {
 	       log.entering(UpdaterServiceProvider.class.getName(),"scheduledTimeout");
 			
@@ -96,7 +96,7 @@ public class UpdaterServiceProvider {
 	}
 
 	
-	@Scheduled(cron ="*0 21 * * MON-FRI")
+	@Scheduled(cron ="* * */30 * * MON-FRI")
 	public void clearRates() {
 		int invalidated = conversionRateRepo.invalidateAll();
 		log.log(Level.WARNING,"Convertion rate records invalidated {0} ",invalidated);
