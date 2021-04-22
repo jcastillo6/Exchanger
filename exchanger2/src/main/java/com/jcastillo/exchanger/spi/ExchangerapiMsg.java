@@ -16,9 +16,26 @@ public class ExchangerapiMsg {
 	private String base;
 	private String date;
 	private Rates rates;
+	private boolean success;
 	
 		
 	
+	public boolean isSuccess() {
+		return success;
+	}
+
+
+
+
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+
+
+
+
 	public String getBase() {
 		return base;
 	}

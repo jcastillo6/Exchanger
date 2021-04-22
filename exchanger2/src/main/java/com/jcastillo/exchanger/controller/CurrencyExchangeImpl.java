@@ -31,8 +31,12 @@ public class CurrencyExchangeImpl implements CurrencyExchanger{
 
 	@Override
 	public List<Currency> findCurrencies() {
-		
-		return null;
+		List<Currency> currencies = currencyRepo.findAll();
+		if(currencies==null || currencies.size()==0) {
+			updaterRates.updateRates();
+			currencies = currencyRepo.findAll();
+		}
+		return currencies;
 	}
 
 	@Override

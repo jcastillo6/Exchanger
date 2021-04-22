@@ -10,10 +10,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EntityScan(basePackages = {"com.jcastillo.exchanger.model"} )
 @EnableJpaRepositories(basePackages = {"com.jcastillo.exchanger.repository"})
 @EnableScheduling
-public class Exchanger2Application {
+public class ExchangerApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Exchanger2Application.class, args);
+		SpringApplication.run(ExchangerApp.class, args);
 	}
 
 }
